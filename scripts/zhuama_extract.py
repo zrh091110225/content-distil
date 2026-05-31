@@ -24,6 +24,7 @@ IMG_LINE_RE = re.compile(r"!\[.*?\]\(.*?\)")
 WECHAT_REDIRECT_RE = re.compile(r"wechat_redirect", re.I)
 IMPORT_FRONTMATTER_RE = re.compile(r"^(title|source|author|published|created|description|tags|mode)\s*:\s*", re.I)
 WECHAT_NAV_RE = re.compile(r"(继续滑动看下一个|向上滑动看下一个)")
+TITLE_COPY_SUFFIX_RE = re.compile(r"(?:\s+\d+|\((?:副本|\d+)\)|（(?:副本|\d+)）|\s+副本)$", re.I)
 
 TITLE_JUDGMENT_RE = re.compile(r"(本质|真正|关键|不是.+而是|值得|必须|依旧|最迫切|决定|照见|解锁)", re.S)
 TITLE_CONFLICT_RE = re.compile(r"(不是.+而是|但|却|别再|不要|劫持|冲突|困境|挣扎|风波|之难|之名)", re.S)
@@ -158,6 +159,17 @@ def parse_metadata(md: str) -> dict[str, Any]:
         "published_at": published_at,
         "url": url,
     }
+
+
+def normalize_title_for_duplicate_check(title: str) -> str:
+    normalized = title.replace("\u3000", " ").strip()
+    normalized = re.sub(r"\s+", " ", normalized)
+    while True:
+        updated = TITLE_COPY_SUFFIX_RE.sub("", normalized).strip()
+        if updated == normalized:
+            break
+        normalized = updated
+    return normalized.casefold()
 
 
 def normalize_date(s: str) -> str:
@@ -446,6 +458,37 @@ def build_items(
             )
         )
     return items
+
+
+def find_changed_title_duplicates(items: list[ContentItem]) -> list[list[ContentItem]]:
+    by_title: dict[str, list[ContentItem]] = defaultdict(list)
+    for it in items:
+        key = normalize_title_for_duplicate_check(it.title or it.path.stem)
+        by_title[key].append(it)
+
+    duplicate_groups: list[list[ContentItem]] = []
+    for key, group in by_title.items():
+        if not key or len(group) < 2:
+            continue
+        if any(it.status in {"new", "updated"} for it in group):
+            duplicate_groups.append(sorted(group, key=lambda it: (it.status != "new", str(it.path))))
+    return duplicate_groups
+
+
+def raise_on_changed_title_duplicates(items: list[ContentItem], root: Path) -> None:
+    duplicate_groups = find_changed_title_duplicates(items)
+    if not duplicate_groups:
+        return
+
+    lines = ["检测到新增或更新文章的标题重复，请先处理后再运行增量提取：", ""]
+    for group in duplicate_groups:
+        canonical_title = normalize_title_for_duplicate_check(group[0].title or group[0].path.stem)
+        lines.append(f"- 归一化标题：{canonical_title}")
+        for it in group:
+            rel = it.path.relative_to(root)
+            lines.append(f"  - [{it.status}] {it.title} ({rel})")
+        lines.append("")
+    raise SystemExit("\n".join(lines).rstrip())
 
 
 def stratified_holdout(items: list[ContentItem], ratio: float = 0.2) -> tuple[list[ContentItem], list[ContentItem]]:
@@ -1657,6 +1700,7 @@ def main() -> None:
     validation_report_text = (out_dir / "validation_report.md").read_text(encoding="utf-8") if (out_dir / "validation_report.md").exists() else ""
 
     items = build_items(docs_dir=docs_dir, root=ROOT, previous_manifest=previous_manifest)
+    raise_on_changed_title_duplicates(items, ROOT)
     train, holdout = stratified_holdout(items, ratio=args.holdout_ratio)
 
     holdout_set = {it.path for it in holdout}
