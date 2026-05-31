@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29 20:11:30",
+  "generated_at": "2026-05-31 14:15:33",
   "corpus": "zhuama",
   "docs_dir": "docs/zhuama",
   "out_dir": "outputs/zhuama",
@@ -418,19 +418,6 @@
       "topic": "其他",
       "paragraph_count": 102,
       "file_hash": "1bfe1e96eebfd6e5e8308cdcffd811d9f166505e2a008ca64e76cf83708e08ed",
-      "status": "unchanged",
-      "split": "holdout"
-    },
-    {
-      "content_id": "C-0033",
-      "file": "docs/zhuama/紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日 1.md",
-      "title": "紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日 1",
-      "account": "抓马教育",
-      "published_at": "",
-      "url": "",
-      "topic": "招募",
-      "paragraph_count": 52,
-      "file_hash": "6c2a6275a23438fb3626e5e11a4890f54c98bec64c271a26f138c89c70c53f0b",
       "status": "unchanged",
       "split": "holdout"
     },

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-29 20:11:30",
+  "generated_at": "2026-05-31 14:15:33",
   "corpus": "zhuama",
-  "total": 37,
+  "total": 36,
   "train": 27,
-  "holdout": 10,
+  "holdout": 9,
   "topics": {
-    "招募": 6,
+    "招募": 5,
     "旅途": 8,
     "其他": 7,
     "牺牲": 9,

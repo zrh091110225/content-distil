@@ -12,7 +12,6 @@
 ## 招募
 
 -  [紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日](file:///Users/hymanhai/Documents/zrhp/content-distil/docs/zhuama/紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日.md) (docs/zhuama/紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日.md)
--  [紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日 1](file:///Users/hymanhai/Documents/zrhp/content-distil/docs/zhuama/紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日 1.md) (docs/zhuama/紧急招募20滴小雨滴挑战勇气徽章丨抓马开放日 1.md)
 
 ## 旅途
 
@@ -31,4 +30,4 @@
 
 ---
 
-训练集：27 篇；验证集：10 篇；总计：37 篇。
+训练集：27 篇；验证集：9 篇；总计：36 篇。

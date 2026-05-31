@@ -1,7 +1,7 @@
 # 抓马教育（docs/zhuama）文风 DNA 基线（新版 8 层框架）
 
 <!-- AUTO:CORPUS_OVERVIEW_START -->
-语料范围：`docs/zhuama` 共 37 篇；按主题分层抽取 20% 作为验证集；本基线基于训练集 27 篇统计生成。  
+语料范围：`docs/zhuama` 共 36 篇；按主题分层抽取 20% 作为验证集；本基线基于训练集 27 篇统计生成。  
 <!-- AUTO:CORPUS_OVERVIEW_END -->
 验证集清单见：[holdout_list.md](file:///Users/hymanhai/Documents/zrhp/content-distil/outputs/zhuama/holdout_list.md)
 
