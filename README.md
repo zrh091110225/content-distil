@@ -38,9 +38,6 @@ content-distil/
         ├── style_dna.md               # 文风 DNA 分析版
         ├── style_spec.md              # 文风执行版
         ├── validation_report.md       # holdout 验证记录
-        ├── quant_check.md             # 量化检查
-        ├── blind_test.md              # 盲测记录
-        ├── new_writing.md             # 复刻写作样稿
         ├── generated/                 # 自动生成的候选材料
         └── state/                     # 增量维护状态文件
 ```
@@ -266,8 +263,6 @@ outputs/<corpus>/validation_report.md
 1. `outputs/<corpus>/style_spec.md`
 2. `outputs/<corpus>/beliefs_models.md`
 3. `outputs/<corpus>/style_dna.md`
-4. `outputs/<corpus>/quant_check.md`
-5. `outputs/<corpus>/blind_test.md`
 
 写作时优先使用 `style_spec.md`，它是执行版，已经把分析结果转成可操作规则。
 

@@ -213,10 +213,3 @@
   - 是否出现新模型候选
 
 ---
-
-## 5) 新问题写作 + 量化 + A/B 盲测（v1）
-
-- 新问题：孩子沉迷短视频/游戏，家长越管越对立
-- 新写作输出：[new_writing.md](file:///Users/hymanhai/Documents/zrhp/content-distil/outputs/zhuama/new_writing.md)
-- 量化命中表：[quant_check.md](file:///Users/hymanhai/Documents/zrhp/content-distil/outputs/zhuama/quant_check.md)
-- A/B 盲测问卷：[blind_test.md](file:///Users/hymanhai/Documents/zrhp/content-distil/outputs/zhuama/blind_test.md)

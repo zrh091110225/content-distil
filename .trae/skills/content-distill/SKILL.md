@@ -86,9 +86,6 @@ description: "Distills a corpus into taxonomy, beliefs, mental models, and an ex
 - `style_dna.md`：账号级风格基线。
 - `style_spec.md` 或执行版 style 文档：可直接用于生成任务。
 - `validation_report.md`：holdout 复测记录。
-- `new_writing.md`：新问题写作样稿。
-- `quant_check.md`：量化命中表。
-- `blind_test.md`：盲测题面和记录。
 
 配套文件：
 
